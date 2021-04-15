@@ -8,5 +8,5 @@ export default {
   cleared: '#25d9cd',
   inProgress: '#ae7ce8',
   covered: '#ee1649',
-  greyText: '707070',
+  greyText: '#24132E',
 };

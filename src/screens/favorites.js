@@ -28,7 +28,7 @@ export default function Favorites() {
   }
 
   return (
-    <View>
+    <View style={globalStyles.container}>
       <Header />
 
 
@@ -38,17 +38,19 @@ export default function Favorites() {
         data={place}
         renderItem={({ item }) =>(
           <TouchableOpacity onPress={() => pressHandler(item.id)}>
+
             <View style={globalStyles.body}>
 
               <View style={globalStyles.subBody}>
                 <Text style={globalStyles.subHeaderText}>Lot: {item.spot.name}</Text>
-                <Text>estimated time: {item.spot.time}</Text>
+                <Text style={globalStyles.text}>estimated time: {item.spot.time}</Text>
               </View>
               <View>
                 <Image source={require('../assets/img/bad.png')}/>
                 <Text>{item.spot.state}</Text>
               </View>
             </View>
+
           </TouchableOpacity>
 
 

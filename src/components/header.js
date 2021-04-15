@@ -7,15 +7,15 @@ import { StyleSheet, Text, View} from 'react-native';
 
 import colors from '../assets/themes/colors';
 
-export default function Header() {
+export const Header=({title}) => (
 
-  return (
+
     <View style={styles.header}>
-      <Text style={styles.headerText}>Favorites</Text>
+      <Text style={styles.headerText}>{title}</Text>
     </View>
 
   )
-}
+
 
 const styles = StyleSheet.create({
   header: {
@@ -23,13 +23,17 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
     backgroundColor: colors.primary,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+
   },
   headerText: {
-    fontFamily: 'Arial',
-    fontSize: 30,
+    fontFamily: 'Ubuntu-Regular',
+    fontSize: 40,
+
   },
 
 
 });
+
+export default Header;
