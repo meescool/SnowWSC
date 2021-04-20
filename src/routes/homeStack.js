@@ -7,7 +7,7 @@ import Reports from '../screens/reports';
 
 const screens = {
   Reports:{
-    screen: Reports
+    screen: Reports,
   },
   Favorites:{
     screen: Favorites

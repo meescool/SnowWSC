@@ -3,21 +3,23 @@
  * @date 4/11/2021
  */
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList, TouchableOpacity, Icon,Image } from 'react-native';
 import Header from '../components/header';
 import colors from '../assets/themes/colors';
 import { globalStyles } from '../assets/themes/globalStyles';
 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 export default function Favorites() {
   const [place, setPlace] = useState([
-    { spot: {name:'10', time:'12 min', state: 'bad'}, id: '1'},
-    { spot: {name:'9', time:'12 min', state: 'bad'}, id: '2'},
-    { spot: {name:'0', time:'12 min', state: 'bad'}, id: '3'},
-    { spot: {name:'80', time:'12 min', state: 'bad'}, id: '4'},
-    { spot: {name:'10', time:'12 min', state: 'bad'}, id: '5'},
-    { spot: {name:'9', time:'12 min', state: 'bad'}, id: '6'},
-    { spot: {name:'0', time:'12 min', state: 'bad'}, id: '7'},
-    { spot: {name:'80', time:'12 min', state: 'bad'}, id: '8'},
+    { spot: {name:'10', time:'12 min', state: 'mood-bad', colors:colors.covered}, id: '1'},
+    { spot: {name:'9', time:'12 min', state: 'mood', colors:colors.cleared}, id: '2'},
+    { spot: {name:'0', time:'12 min', state: 'sentiment-neutral', colors:colors.inProgress}, id: '3'},
+    { spot: {name:'80', time:'12 min', state: 'sentiment-neutral', colors:colors.inProgress}, id: '4'},
+    { spot: {name:'10', time:'12 min', state: 'mood', colors:colors.cleared}, id: '5'},
+    { spot: {name:'9', time:'12 min', state: 'sentiment-neutral', colors:colors.inProgress}, id: '6'},
+    { spot: {name:'0', time:'12 min', state: 'mood-bad', colors:colors.covered}, id: '7'},
+    { spot: {name:'80', time:'12 min', state: 'mood-bad', colors:colors.covered}, id: '8'},
     ])
 
   const pressHandler = (id) => {
@@ -29,7 +31,7 @@ export default function Favorites() {
 
   return (
     <View style={globalStyles.container}>
-      <Header />
+      <Header title='Favorites'/>
 
 
       <FlatList
@@ -39,15 +41,14 @@ export default function Favorites() {
         renderItem={({ item }) =>(
           <TouchableOpacity onPress={() => pressHandler(item.id)}>
 
-            <View style={globalStyles.body}>
+            <View style={styles.body}>
 
-              <View style={globalStyles.subBody}>
+              <View style={styles.subBody}>
                 <Text style={globalStyles.subHeaderText}>Lot: {item.spot.name}</Text>
-                <Text style={globalStyles.text}>estimated time: {item.spot.time}</Text>
+                <Text style={styles.text}>estimated time: {item.spot.time}</Text>
               </View>
               <View>
-                <Image source={require('../assets/img/bad.png')}/>
-                <Text>{item.spot.state}</Text>
+                <MaterialIcons name={item.spot.state} color={item.spot.colors} size={100}/>
               </View>
             </View>
 
@@ -64,8 +65,34 @@ export default function Favorites() {
 const styles = StyleSheet.create({
 
 
-  boldText: {
-    fontWeight: 'bold',
+  body:{
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    flex: 1,
+    flexDirection: 'row',
+    marginVertical: 2,
+    marginHorizontal: 20,
+    backgroundColor: '#fff',
+    borderTopRightRadius: 20,
+    borderBottomLeftRadius: 20,
+  
+
+  },
+
+  subBody:{
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent:'space-around',
+
+  },
+
+  subHeaderText:{
+    fontFamily: 'Ubuntu-Regular',
+    fontSize: 30,
+  },
+
+  text:{
+    color: colors.inProgress,
   },
 
   buttonContainer: {
@@ -73,15 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
   },
 
-  input: {
-    backgroundColor: '#fff',
-    borderWidth: 5,
-    borderColor: '#777',
-    padding: 8,
-    margin: 10,
-    width: 200,
-    borderRadius: 29,
-  }
+
   });
 
 

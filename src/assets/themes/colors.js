@@ -4,7 +4,7 @@
  */
 export default {
   primary: '#FFD83B',
-  secondary: '#e4cc37',
+  secondary: '#8923FF',
   cleared: '#25d9cd',
   inProgress: '#ae7ce8',
   covered: '#ee1649',

@@ -12,7 +12,7 @@ import { globalStyles } from '../assets/themes/globalStyles';
 
 import ReportButton from '../components/reportButton';
 
-export default function Reports({navigation}) {
+export default function Favorites({navigation}) {
   const [place, setPlace] = useState([
     { spot: {name:'10', time:'12 min', state: 'bad'}, id: '1'},
     { spot: {name:'9', time:'12 min', state: 'bad'}, id: '2'},
